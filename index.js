@@ -18,15 +18,14 @@
  * @param  {Function} sourceFunc Function that is being monitored
  * @return {Function}            New function to use in place of sourceFunc
  */
-module.exports.periodUntil = Function.periodUntil = function(sourceFunc) {
-        var self = this;
-        var timecall = sourceFunc.name+" (wait)";
-        console.time(timecall);
-        return function() {
-            console.timeEnd(timecall);
-            sourceFunc.apply(self, arguments);
-        };
-    },
+module.exports.periodUntil = Function.periodUntil = function(sourceFunc, label) {
+    var self = this;
+    var timecall = (label || sourceFunc.name)+" (wait)";
+    console.time(timecall);
+    return function() {
+        console.timeEnd(timecall);
+        sourceFunc.apply(self, arguments);
+    };
 };
 Function.periodUntil.constructor = Function.periodUntil;
 
