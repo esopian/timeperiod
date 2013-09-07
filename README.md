@@ -9,9 +9,9 @@ This project was created to help with fast debugging and lightweight profiling o
 
 ####Functions####
 *  [period](#period)
-*  [periodSync](#periodSync)
-*  [periodAsync](#periodAsync)
-*  [periodUntil](#periodUntil)
+*  [periodSync](#periodsync)
+*  [periodAsync](#periodasync)
+*  [periodUntil](#perioduntil)
 
 ##Installing##
 ```
@@ -116,13 +116,13 @@ _output:_
 ### <a id="period"></a>`.period(*)`
 Will attempt to automatically detect whether function is a sync or async call and attach to either the return or callback.
 
-### <a id="periodSync"></a>`.periodSync(*)`
+### <a id="periodsync"></a>`.periodSync(*)`
 Call a function explicitly profiling the time until return
 
-### <a id="periodAsync"></a>`.periodAsync(*)`
+### <a id="periodasync"></a>`.periodAsync(*)`
 Call a function explicitly profiling the time until `callback`.  The callback must be the last argument
 
-### <a id="periodUntil"></a>`.periodUntil(func, label)`
+### <a id="perioduntil"></a>`.periodUntil(func, label)`
 Will return a function and calculate the time from construction until the function is called.  Does not matter if function is Sync or Async.  Useful for attaching in a flow control function.  Optionally takes a label as the second argument.
 
 _Example use with Async:_
