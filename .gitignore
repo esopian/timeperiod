@@ -1,0 +1,18 @@
+#################
+## npm
+#################
+
+npm-debug.log
+node_modules/
+
+#################
+## OS
+#################
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
