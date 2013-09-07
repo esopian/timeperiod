@@ -1,0 +1,18 @@
+{
+  "name": "timeperiod",
+  "version": "0.0.1",
+  "description": "Experiments in timing and profiling Node.js functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/esopian/timeperiod.git"
+  },
+  "author": "Evan Mallory",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/esopian/timeperiod/issues"
+  }
+}
