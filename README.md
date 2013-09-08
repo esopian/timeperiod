@@ -150,3 +150,7 @@ _output:_
 >e70727e8-32cd-46f1-b195-1e6c20b3fadc First Async Call (wait): 2001ms
 >
 >Done without errors
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/esopian/timeperiod/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
