@@ -45,7 +45,7 @@ hello.period();
 _output:_
 >My Name is Node. Nice to meet you.
 >
->hello: 1ms
+>e70727e8-32cd-46f1-b195-1e6c20b3fadc hello: 1ms
 
 
 __Construct a new function:__
@@ -62,7 +62,7 @@ newHello();
 _output:_
 >My Name is Node. Nice to meet you.
 >
->hello: 1ms
+>e70727e8-32cd-46f1-b195-1e6c20b3fadc hello: 1ms
 
 __Async:__ functions that rely on callbacks can be called in the same manner or called diectly with `periodAsync` if the auto-detection is not working.
 
@@ -84,7 +84,7 @@ waitHello.period(function(){
 _output:_
 >My Name is Node. Nice to meet you.
 >
->waitHello: 1002ms
+>e70727e8-32cd-46f1-b195-1e6c20b3fadc waitHello: 1002ms
 >
 >Done
 
@@ -108,7 +108,7 @@ newWaitHello(function(){
 _output:_
 >My Name is Node. Nice to meet you.
 >
->waitHello: 1002ms
+>e70727e8-32cd-46f1-b195-1e6c20b3fadc waitHello: 1002ms
 >
 >Done
 
@@ -147,6 +147,6 @@ function(err) {
 
 ```
 _output:_
->First Async Call (wait): 2001ms
+>e70727e8-32cd-46f1-b195-1e6c20b3fadc First Async Call (wait): 2001ms
 >
 >Done without errors
