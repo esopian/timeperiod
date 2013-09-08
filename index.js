@@ -1,3 +1,4 @@
+var uuid = require('node-uuid');
 //  _____ _                ____           _           _
 // |_   _(_)_ __ ___   ___|  _ \ ___ _ __(_) ___   __| |
 //   | | | | '_ ` _ \ / _ \ |_) / _ \ '__| |/ _ \ / _` |
@@ -16,11 +17,12 @@
  * periodUntil constructs a new function that will calculate
  *  the time from construction until the function is called.
  * @param  {Function} sourceFunc Function that is being monitored
+ * @param  {String}   label      Label to be used to output
  * @return {Function}            New function to use in place of sourceFunc
  */
 module.exports.periodUntil = Function.periodUntil = function(sourceFunc, label) {
     var self = this;
-    var timecall = (label || sourceFunc.name)+" (wait)";
+    var timecall = [uuid.v4(),(label || sourceFunc.name || ("Anon") )," (wait)"].join(' ');
     console.time(timecall);
     return function() {
         console.timeEnd(timecall);
@@ -35,9 +37,10 @@ Function.periodUntil.constructor = Function.periodUntil;
  * @return {*}           return value of the source function
  */
 Function.prototype.periodSync = function() {
-	console.time(this.name);
+	var timecall = [uuid.v4(),(this.name || "Anon")].join(' ');
+	console.time(timecall);
 	var output = this.apply(this, arguments);
-	console.timeEnd(this.name);
+	console.timeEnd(timecall);
 	return output;
 };
 
@@ -49,13 +52,14 @@ Function.prototype.periodSync = function() {
  */
 Function.prototype.periodAsync = function() {
 	var self     = this;
+	var timecall = [uuid.v4(),(this.name || "Anon")].join(' ');
 	var callback = arguments[arguments.length-1];
 	var argArray = arguments;
 	argArray[arguments.length-1] = function() {
-		console.timeEnd(self.name);
+		console.timeEnd(timecall);
 		callback.apply(self,arguments);
 	};
-	console.time(self.name);
+	console.time(timecall);
 	return self.apply(self, argArray);
 };
 
