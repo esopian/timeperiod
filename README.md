@@ -5,6 +5,8 @@ Experiments in timing and profiling Node.js functions.
 
 This project was created to help with fast debugging and lightweight profiling of Node.js applications.  Track down your slowest functions or apandoned callbacks quickly.
 
+### !!!UPDATE!!! - Don't use.  Working out some scoping and pattern problems ###
+
 ### !!!Experimental!!! - Use for debugging only ###
 
 ####Functions####

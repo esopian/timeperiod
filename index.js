@@ -6,8 +6,9 @@ var uuid = require('node-uuid');
 //   |_| |_|_| |_| |_|\___|_|   \___|_|  |_|\___/ \__,_|
 
 ["period", "periodSync", "periodAsync"].forEach(function(item){
-	Function[item] = function(func, args) {
-		return function() { return func[item].apply(func, args); };
+	Function[item] = function(func) {
+		var self = this;
+		return function() { return func[item].apply(self, arguments); };
 	};
 	Function[item].constructor = Function[item];
 	module.exports[item] = Function[item];
@@ -26,7 +27,7 @@ module.exports.periodUntil = Function.periodUntil = function(sourceFunc, label) 
     console.time(timecall);
     return function() {
         console.timeEnd(timecall);
-        sourceFunc.apply(self, arguments);
+        return sourceFunc.apply(self, arguments);
     };
 };
 Function.periodUntil.constructor = Function.periodUntil;
@@ -57,10 +58,10 @@ Function.prototype.periodAsync = function() {
 	var argArray = arguments;
 	argArray[arguments.length-1] = function() {
 		console.timeEnd(timecall);
-		callback.apply(self,arguments);
+		return callback.apply(self,arguments);
 	};
 	console.time(timecall);
-	return self.apply(self, argArray);
+	return this.apply(this, argArray);
 };
 
 /**
@@ -70,7 +71,7 @@ Function.prototype.periodAsync = function() {
  * @return {*}           return value of the source function
  */
 Function.prototype.period = function() {
-	if(typeof arguments[arguments.length-1] == 'function') {
+	if(typeof arguments[arguments.length-1] === 'function') {
 		return Function.prototype.periodAsync.apply(this, arguments);
 	} else {
 		return Function.prototype.periodSync.apply(this, arguments);
